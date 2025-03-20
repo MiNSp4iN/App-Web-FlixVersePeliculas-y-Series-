@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6f9c5b3fc8a04ea4eaee0f94e18d232a813fd2d5b9fef4e720ad3f18cd02b1aa
-size 1092
+<div class="container">
+    {% for pelicula in peliculas_favoritas %}
+    <div class="pelicula-card">
+        <a href="{% url 'detalle_pelicula' pelicula.id pelicula.categoria.id %}" style="text-decoration: none;">
+                <img src="{{ pelicula.portada.url }}" class="img-fluid rounded-start"
+                    alt="{{ pelicula.titulo }}" width="100">
+                <h5>{{ pelicula.titulo }}</h5>
+        </a>
+        <form action="{% url 'marcar_pelicula_favorita' pelicula.id %}" method="POST">
+            {% csrf_token %}
+            {% if request.user in pelicula.favorita.all %}
+            <!-- Este if sirve para verificar si el usuario ya tiene la pelicula en favoritos -->
+            <button type="submit" style="background-color: red; color: white;"> Quitar de Favorita</button>
+            {% else %}
+            <button type="submit" style="background-color: rgb(7, 199, 0); color: white;">Marcar como
+                Favorita</button>
+            {% endif %}
+        </form>
+    </div>
+    {% empty %}
+    <p>No se encontraron resultados</p>
+    {% endfor %}
+</div>

@@ -1,3 +1,59 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7285ec7ce1dc02e08ec8e293333ffc320e99d2718aca755870a73ddfddd45a91
-size 1113
+body {
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+}
+
+.titulo {
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: rgb(0, 0, 0);
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    position: absolute;
+    text-align: center;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+
+#background-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+
+
+.chart-container {
+    background: rgba(255, 0, 221, 0.1);
+    backdrop-filter: blur(10px);
+    width: 30%;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(3, 243, 243, 0.3);
+    padding: 10px;
+    transition: transform 0.4s, box-shadow 0.4s;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+}
+
+.chart-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.chart-container:hover {
+    transform: scale(1.05);
+}

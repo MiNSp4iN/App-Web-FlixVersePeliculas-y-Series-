@@ -1,3 +1,131 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ca95a82e45a96eeab01d3ed6591b29a35700ebd59188e5ab0e0eaf98fc483078
-size 2455
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+    padding-top: 80px; 
+    background: #0a001f; 
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+}
+
+.navbar {
+    background: linear-gradient(90deg, #220357, #6b03fc, #03e9f4); 
+    box-shadow: 0px 0px 20px rgba(3, 233, 244, 0.8);
+    border-bottom: 2px solid #03e9f4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999;
+    padding: 15px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: top 0.3s ease-in-out;
+}
+
+.navbar-brand {
+    font-size: 1.0rem;
+    font-weight: bold;
+    color: #03e9f4 !important;
+    text-shadow: 0 0 10px #03e9f4, 0 0 20px #03e9f4;
+    transition: 0.3s;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.1);
+}
+
+.navbar-nav .nav-item {
+    color: #fff;
+}
+
+.navbar-nav .nav-link {
+    color: #03e9f4 !important;
+    font-size: 1.2rem;
+    transition: 0.3s;
+    position: relative;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ff03fc !important;
+    transform: scale(1.1);
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #03e9f4;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover::after {
+    transform: scaleX(1);
+}
+
+.dropdown-menu {
+    background: rgba(3, 233, 244, 0.9);
+    border: none;
+    box-shadow: 0px 5px 20px rgba(3, 233, 244, 0.5);
+    border-radius: 10px;
+}
+
+.dropdown-menu .dropdown-item {
+    color: #0a001f;
+    transition: 0.3s;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background: #ff03fc;
+    color: white;
+}
+
+.form-control {
+    border-radius: 20px;
+    background-color: rgba(3, 233, 244, 0.2);
+    border: 1px solid #03e9f4;
+    color: #fff;
+}
+
+.form-control::placeholder {
+    color: #03e9f4;
+}
+
+.btn-outline-success {
+    color: #fff;
+    border-color: #03e9f4;
+    transition: 0.3s;
+}
+
+.btn-outline-success:hover {
+    background-color: #03e9f4;
+    color: black;
+    border-color: #ff03fc;
+    box-shadow: 0 0 10px #03e9f4;
+}
+
+@media (max-width: 991px) {
+    .navbar {
+        background: #220357;
+        min-height: 70px;
+    }
+
+    .categorias-body {
+        padding-top: 90px;
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 10px 0;
+    }
+}

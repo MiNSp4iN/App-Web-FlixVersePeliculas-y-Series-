@@ -1,3 +1,58 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cbabeb0a8047f3611bfb5d987fa48a7007af2d07853b118d6212a66923b97622
-size 2427
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlixVerse</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles/signup.css' %}">    
+    <link rel="icon" type="image/x-icon" href="{% static 'iconos/FlixVerseicono.ico' %}">
+</head>
+
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="{% static 'video_signup.mp4' %}" type="video/mp4">
+    </video>
+{% block content %}
+<main class="container">
+    <div class="row justify-content-center">
+        <section class="col-md-4 mt-5">
+            <form action="/signup/" method="POST" class="login-card">
+                <h1 class="text-center neon-text">FlixVerse</h1>
+                <h2 class="text-center">Registrarse</h1>
+                {{error}}
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username">Usuario:</label>
+                    <input type="text" name="username" id="username" class="form-control" style="font-size: 0.875em;"
+                        placeholder="Escribe tu usuario">
+                </div>
+
+                <div class="mb-3">
+                    <label for="password1">Contraseña:</label>
+                    <input type="password" name="password1" id="password1" class="form-control" style="font-size: 0.875em;"
+                        placeholder="Crea tu contraseña">
+                </div>
+
+                <div class="mb-3">
+                    <label for="password2">Confirma tu contraseña:</label>
+                    <input type="password" name="password2" id="password2" class="form-control"
+                        placeholder="Confirma tu nueva contraseña" style="font-size: 0.875em;">
+                </div>
+                <button class="btn neon-btn">
+                    Registrarse
+                </button>
+                <div>
+                    <p class="text-center mt-3">¿Ya tienes cuenta?</p>
+                    <a href="/signin" class="register-link">Inicia sesión aquí</a>
+                </div>
+            </form>
+        </section>
+
+    </div>
+</main>
+{% endblock %}
+</body>
+</html>

@@ -1,3 +1,40 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b6266aeacb4844041531c31b67ba9c1daff1370eb47b884a8064ca599076e8e9
-size 1399
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Películas Vistas</title>
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}?v=2">
+    <link rel="icon" type="image/x-icon" href="{% static 'iconos/FlixVerseicono.ico' %}">
+</head>
+
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="{% static 'video_main.mp4' %}" type="video/mp4">
+    </video>
+    {% include 'navbar2.html' %}
+    {%block content%}
+
+    <div class="titulo-container">
+    <h1 class="titulo " style="font-size: 0.8em;"> Aquí tienes las peliculas que ya has visto {{mensaje}}</h1>
+    {% if request.resolver_match.url_name == 'peliculas_vistas' %}
+    <p>Has visto estas {{total_peliculas_vistas}} películas. Hemos hecho cálculos y has pasado un total de {{tiempo_viendo_peliculas}} minutos viéndolas,lo que son aproximadamente unas {{tiempo_viendo_peliculas_horas}} horas.</p>
+    {% endif %}
+    </div>
+
+    {% if peliculas_vistas %}
+    <div id="resultadoLista">
+        <div class="pelicula-grid">
+            {% include 'partials/peliculas_vistas.html' %}
+        </div>
+    </div>
+    {% else %}
+    <p>No tienes películas vistas aún.</p>
+    {% endif %}
+    {% endblock %}
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+</body>
+
+</html>

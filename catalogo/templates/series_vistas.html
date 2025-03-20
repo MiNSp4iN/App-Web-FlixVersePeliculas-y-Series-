@@ -1,3 +1,42 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e80c1c11b45c760f7a8f98c293d512e2634053d04eadf2a70d1b4f2a72cb8608
-size 1505
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Series Vistas</title>
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}?v=2">
+    <link rel="icon" type="image/x-icon" href="{% static 'iconos/FlixVerseicono.ico' %}">
+    <style>
+    </style>
+</head>
+
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="{% static 'video_main.mp4' %}" type="video/mp4">
+    </video>
+    {% include 'navbar2.html' %}
+    {% block content %}
+
+    <div class="titulo-container">
+    <h1 class="titulo" style="font-size: 0.8em;">Aquí tienes las series que ya has visto {{mensaje}}</h1>
+    {% if request.resolver_match.url_name == 'series_vistas' %}
+            <p>En total has visto {{total_series_vistas}} series, {{total_temporadas_vistas}} temporadas y {{total_capitulos_vistos}} capítulos. Hemos hecho cálculos y has pasado un total de {{tiempo_viendo_series}} minutos viendo series, lo que son proximadamente unas {{tiempo_viendo_series_horas}} horas.</p>
+    {% endif %}
+    </div>
+
+    {% if series_vistas %}
+        <div id="resultadoLista">
+            <div class="pelicula-grid">
+                {% include 'partials/series_vistas.html' %}
+            </div>
+        </div>
+    {% else %}
+    <p>No tienes series vistas aún.</p>
+    {% endif %}
+    {% endblock %}
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+</body>
+
+</html>

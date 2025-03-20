@@ -1,3 +1,59 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:758fc55c0a94fed3a11580d95e98b8a54c4ae66fd5ee5117722de49f5d59d958
-size 2613
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlixVerse</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{% static 'iconos/FlixVerseicono.ico' %}">
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+</head>
+
+
+{% block content %}
+
+<video autoplay muted loop id="background-video">
+    <source src="{% static 'video_home.mp4' %}" type="video/mp4">
+</video>
+<main class="container text-center">
+    <section class="welcome-card">
+        <img src="{% static 'FlixVerse.webp' %}" alt="FlixVerse" class="logo">
+        <h1>Bienvenido a <span class="neon-text">FlixVerse.</span></h1>
+        <p>Tu plataforma de streaming online de películas y series en el multiverso.</p>
+        <p>En FlixVerse podrás encontrar una amplia variedad de películas y series de todos los géneros, desde los
+            clásicos hasta los últimos estrenos en todas las dimensiones.</p>
+        <p>¡Inicia sesión o regístrate y comienza a disfrutar de todo el contenido que tenemos para ti!</p>
+        <div>
+            <a class="btn neon-btn" href="/signin">
+                Iniciar sesión
+            </a>
+            <a class="btn neon-btn" href="/signup">
+                Registrarse
+            </a>
+        </div>
+    </section>
+</main>
+<div class="footer"> <!-- El footer es el contenedor de los botones de redes sociales y el mensaje de ayuda -->
+    <h1 style="font-size: 1.3rem;">¿Necesitas ayuda?</h1>
+    <p style="font-size: 0.8rem;">Contáctanos a través de nuestro correo electrónico: <a href="mailto:millanesnieto@hotmail.com">millanesnieto@hotmail.com</a></p>
+<h1 style="font-size: 1.3em;">Síguenos en nuestras redes sociales</h1>
+<div class="social-media-container">
+    <a href="https://www.facebook.com/millanesnieto" target="_blank">
+        <img src="{% static 'iconos/facebook.ico' %}" alt="Facebook" class="social-media">
+    </a>
+    <a href="https://www.instagram.com/moillaness/" target="_blank">
+        <img src="{% static 'iconos/instagram.ico' %}" alt="Instagram" class="social-media">
+    </a>
+    <a href="https://github.com/MiNSp4iN" target="_blank">
+        <img src="{% static 'iconos/github.ico' %}" alt="GitHub" class="social-media">
+    </a>
+</div>
+</div>
+
+<div class="background-animation"></div>
+{% endblock %}
+
+</html>

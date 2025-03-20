@@ -1,3 +1,123 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:15f250ac83c04f7be8d148c508313816b2b030e3e15169435a8b116c8fe5fc73
-size 2292
+/* Fuentes y Estilos Generales */
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: black;
+    color: white;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+main {
+    flex-grow: 1;
+    min-height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 5px; 
+    margin-top: 5px;
+    overflow: visible;
+    width: 90%;
+}
+
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.welcome-card {
+    max-width: 500px;
+    width: 80%;
+    height: auto;
+    background: rgba(20, 20, 20, 0.9);
+    border: 2px solid cyan;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    animation: pulse 2s infinite alternate;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    overflow: visible;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.9);
+    }
+}
+
+.logo {
+    width: 200px;
+    filter: drop-shadow(0 0 10px cyan);
+    align-self: center;
+}
+
+.neon-text {
+    color: cyan;
+    text-shadow: 0 0 10px cyan, 0 0 20px cyan;
+    text-align: center;
+}
+
+.neon-btn {
+    background: linear-gradient(90deg, #00feba, #5b548a);
+    border: none;
+    color: white;
+    padding: 8px 16px; 
+    font-size: 14px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: 0.3s;
+    margin: 8px;
+    box-shadow: 0 0 10px cyan;
+}
+
+.neon-btn:hover {
+    box-shadow: 0 0 15px cyan;
+    transform: scale(1.05);
+}
+
+.social-media-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px; 
+}
+
+.social-media {
+    width: 30px;
+    height: 30px;
+}
+
+.footer {
+    text-align: center;
+    font-size: 0.5em;
+    padding: 0.5px 0;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    box-sizing: border-box;
+    margin-top: 5px;
+    flex-shrink: 0;
+}
+
+.footer h1, p {
+    margin: 0.5;
+}

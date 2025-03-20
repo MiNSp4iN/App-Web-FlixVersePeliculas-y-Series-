@@ -1,3 +1,150 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cb5d1f93fe596b52d01119dbbdc108d559d25781255b2414fa11d76e9584e4d6
-size 3008
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#background-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.main-container {
+    width: 90vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+
+.titulo-container {
+    width: 80%;
+    max-width: 800px;
+    padding: 15px;
+    border: 2px solid rgba(0, 255, 255, 0.6);
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    animation: neonGlow 1.5s infinite alternate ease-in-out;
+}
+
+.titulo-container h1 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+}
+
+.categorias-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 15px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60vh;
+    padding: 10px;
+}
+
+.categoria-card {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.categoria-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+}
+
+.categoria-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.categoria-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease-in-out;
+}
+
+.categoria-card:hover .categoria-img img {
+    transform: scale(1.1);
+}
+
+.categoria-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 255, 255, 0.8);
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.categoria-card:hover .categoria-overlay {
+    opacity: 1;
+}
+
+@keyframes neonGlow {
+    from {
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+    }
+    to {
+        box-shadow: 0 0 20px rgba(0, 255, 255, 1);
+    }
+}
+
+/* 🔹 Ajustes para Pantallas Pequeñas */
+@media (max-width: 1024px) {
+    .titulo-container {
+        width: 90%;
+    }
+    
+    .categorias-container {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .categorias-container {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+}

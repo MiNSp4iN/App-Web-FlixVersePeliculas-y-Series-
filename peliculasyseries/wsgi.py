@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:04ae4b20306f4484d80bfa8f94ec56efd062adeae5e45101572759fa5cc8ee91
-size 409
+"""
+WSGI config for peliculasyseries project.
+
+It exposes the WSGI callable as a module-level variable named ``application``.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/5.1/howto/deployment/wsgi/
+"""
+
+import os
+
+from django.core.wsgi import get_wsgi_application
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'peliculasyseries.settings')
+
+application = get_wsgi_application()

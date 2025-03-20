@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:439e89dee9298dd8102d07bcda66687707d1522a45661e4a30be6c40f2c3c415
-size 208
+.trailer-container {
+    position: relative;
+}
+
+.trailer-container iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}

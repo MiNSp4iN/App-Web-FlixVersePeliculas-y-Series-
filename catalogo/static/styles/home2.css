@@ -1,3 +1,104 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5aad753dcce62ab0a88d0066d5580a144d5091be3429c92ee24d811982d912f6
-size 2130
+
+body {
+    position: relative;
+    z-index: 1;
+    margin:0;
+    padding:0;
+    overflow: hidden;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+    text-align: center;
+}
+
+#background-video {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -10;
+}
+
+main, .contenedor, h1, p {
+    position: relative;
+    z-index: 2;
+}
+.contenedor {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+.contenedor a {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+    transition: transform 0.4s ease-in-out, box-shadow 0.3s;
+}
+
+.contenedor a:hover {
+    transform: scale(1.1) rotate(1deg);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.9);
+}
+
+.contenedor img {
+    width: 300px; 
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s;
+}
+
+.contenedor img:hover {
+    transform: scale(1.1);
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    color: #0ff;
+    text-transform: uppercase;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #00f;
+    border: 3px solid rgba(0, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 15px #0ff;
+    background: rgba(0, 0, 0, 0.5);
+    animation: glow 1.5s infinite alternate;
+}
+
+
+p {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    color: #ff00ff;
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #f0f;
+    border: 2px solid rgba(255, 0, 255, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 15px #ff00ff;
+    background: rgba(0, 0, 0, 0.5);
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    }
+    to {
+        box-shadow: 0 0 20px #0ff, 0 0 30px #0ff;
+    }
+}

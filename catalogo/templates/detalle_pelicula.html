@@ -1,3 +1,78 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ab0ee836b609e7f429297e8eff1d1e882b3b3d5da00bf7c910a54d5e02967072
-size 3649
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ pelicula.titulo }}</title>
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}?v=2">
+    <link rel="stylesheet" href="{% static 'styles/trailer.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'iconos/FlixVerseicono.ico' %}">
+</head>
+
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="{% static 'detalle_pelicula.mp4' %}" type="video/mp4">
+    </video>
+    {% include 'navbar2.html' %}
+    <h1>Detalles de {{ pelicula.titulo }}</h1>
+    <div class="container">
+        <div class="pelicula-card">
+            <img src="{{ pelicula.portada.url }}" alt="{{ pelicula.titulo }}">
+            <h5>{{ pelicula.titulo }}</h5>
+            <p style="font-size: 0.9em;">{{ pelicula.descripcion }}</p>
+            <p style="font-size: 0.9em;">Año: {{ pelicula.anio }}</p>
+            <p style="font-size: 0.9em;">Director: {{ pelicula.director }}</p>
+            <p style="font-size: 0.5em; color: #0bf574;">Sinopsis: {{ pelicula.sinopsis }}</p>
+            <p style="font-size: 0.9em;">Duración: {{ pelicula.duracion }} minutos</p>
+            <p style="font-size: 0.9em;">Categoría: {{ pelicula.categoria }}</p>
+
+            <form action="{% url 'marcar_pelicula_favorita' pelicula.id %}" method="POST">
+                {% csrf_token %}
+                {% if request.user in pelicula.favorita.all %}
+                <button type="submit" style="background-color: red; color: white;"> Quitar de Favoritas</button>
+                {% else %}
+                <button type="submit" style="background-color: rgb(7, 199, 0); color: white;">Marcar como
+                    Favorita</button>
+                {% endif %}
+            </form>
+            <form action="{% url 'marcar_pelicula_vista' pelicula.id %}" method="POST">
+                {% csrf_token %}
+                {% if request.user in pelicula.vista.all %}
+                <button type="submit" style="background-color: rgb(255, 123, 0); color: white;"> Quitar de
+                    Vistas</button>
+                {% else %}
+                <button type="submit" style="background-color: rgb(40, 5, 194); color: white;">Marcar como
+                    Vista</button>
+                {% endif %}
+            </form>
+        </div>
+        <div class="trailer-container" style="width: 50%; grid-column: span 4;">
+            <h2 class="text-center">Tráiler</h2>
+            {% if pelicula.trailer_url %}
+            <iframe src="https://www.youtube.com/embed/{{ pelicula.trailer_url|cut:'https://www.youtube.com/watch?v=' }}"
+            frameborder="0"
+            allowfullscreen>
+            </iframe>
+            {% else %}
+            <p>No hay tráiler disponible</p>
+            {% endif %}
+        </div>
+    </div>
+    <h1 class="text-center" style="font-size: 1.5em; color: #19f805;">Aquí tienes películas relacionadas con {{pelicula.titulo}}</h1>
+    <div class="container">
+        {% for pelicula in peliculas_relacionadas %}
+        <div class="pelicula-card">
+            <a href="{% url 'detalle_pelicula' pelicula.id pelicula.categoria.id %}" style="text-decoration:none;">
+                <img src="{{ pelicula.portada.url }}" alt="{{ pelicula.titulo }}">
+                <h5>{{ pelicula.titulo }}</h5>
+                <p style="font-size: 0.9em;">Año: {{ pelicula.anio }}</p>
+                <p style="font-size: 0.9em;">Director: {{ pelicula.director }}</p>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

@@ -1,3 +1,45 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8b3f56fbdfcc203748539ac05d67ae52b44a2be95afa0bc2d90c47d3cfae95a2
-size 1517
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorías de películas</title>
+    <link rel="stylesheet" href="{% static 'styles/categorias.css' %}?v=2">
+    <link rel="icon" type="image/x-icon" href="{% static 'iconos/FlixVerseicono.ico' %}">
+</head>
+
+
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="{% static 'video_categorias.mp4' %}" type="video/mp4">
+    </video>
+    {% include 'navbar2.html' %}
+    {% block content %}
+    
+    <main class="main-container">
+        <div class="titulo-container">
+            <h1>Explora las categorías de las películas</h1>
+            <p>Explora en nuestro universo de películas sus categorías y adéntrate en ellas.</p>
+        </div>
+        <div class="categorias-container">
+            {% for categoria in categorias %}
+            <div class="categoria-card">
+                <a href="{% url 'peliculas_categorizadas' categoria.id %}" class="text-decoration-none">
+                    <div class="categoria-img">
+                        <img src="{{categoria.portada.url}}" alt="{{categoria.nombre}}">
+                        <div class="categoria-overlay">
+                            <h3>{{categoria.nombre}}</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    {% endblock %}
+</body>
+
+</html>

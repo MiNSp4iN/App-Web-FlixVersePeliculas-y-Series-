@@ -1,3 +1,31 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b6ae45906761503018d6d4771db5e39087fb7b4cbea05d3e16f983b5dcb63fc1
-size 918
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Series</title>
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}?v=2">
+    <link rel="icon" type="image/x-icon" href="{% static 'iconos/FlixVerseicono.ico' %}">
+</head>
+
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="{% static 'video_main.mp4' %}" type="video/mp4">
+    </video>
+    {% include 'navbar2.html' %}
+    {% block content %}
+    <div class="titulo-container">
+    <h1 class="titulo" style="font-size: 0.8em;">Series {{ mensaje }}</h5>
+    </div>
+    <div id="resultadoLista">
+        <div class="serie-grid">
+            {% include 'partials/lista_series.html' %}
+        </div>
+    </div>
+    {% endblock %}
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+</body>
+
+</html>

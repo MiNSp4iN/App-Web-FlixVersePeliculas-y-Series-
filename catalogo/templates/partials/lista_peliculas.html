@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2239902edffbb497b298d4f37cac6d039192e532306fd0fb250be1fd1adee8e4
-size 1901
+<div class="container">
+    {% for pelicula in peliculas %}
+    <div class="pelicula-card">
+        <a href="{% url 'detalle_pelicula' pelicula.id pelicula.categoria.id %}" style="text-decoration: none;">
+            <img src="{{pelicula.portada.url}}" class="img-fluid rounded-start" alt="{{pelicula.titulo}}">
+            <h5 class="titulo">{{pelicula.titulo}}</h5>
+            <p class="card-text">Año: {{pelicula.anio}}</p>
+            <p class="card-text">Director: {{pelicula.director}}</p>
+            <p class="card-text categoria-text"><small class="text-muted">Categoría: {{pelicula.categoria}} </small></p>
+        </a>
+        <form action="{% url 'marcar_pelicula_favorita' pelicula.id %}" method="POST">
+            {% csrf_token %}
+            {% if request.user in pelicula.favorita.all %}
+            <button type="submit" style="background-color: red; color: white;"> Quitar de Favoritas</button>
+            {% else %}
+            <button type="submit" style="background-color: rgb(7, 199, 0); color: white;">Marcar como
+                Favorita</button>
+            {% endif %}
+        </form>
+        <form action="{% url 'marcar_pelicula_vista' pelicula.id %}" method="POST">
+            {% csrf_token %}
+            {% if request.user in pelicula.vista.all %}
+            <!-- pelicula.vista.all indica una lista de usuarios que han marcado la pelicula como vista y si el usuario actual esta en esa lista le aparecerá el botón de quitar de vistas -->
+            <button type="submit" style="background-color: rgb(255, 123, 0); color: white;"> Quitar de
+                Vistas</button>
+            {% else %}
+            <button type="submit" style="background-color: rgb(40, 5, 194); color: white;">Marcar como
+                Vista</button>
+            {% endif %}
+        </form>
+    </div>
+    {% empty %}
+    <p>No se encontraron resultados</p>
+    {% endfor %}
+</div>

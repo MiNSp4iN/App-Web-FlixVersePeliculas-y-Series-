@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d20925554d6aaabc5b8925746961452947c0644a3381b6b8ea49de15aca7b5fb
-size 1037
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiempo en la web</title>
+    <link rel="stylesheet" href="{% static 'styles/grafico_tiempo.css' %}?v=2">
+    <link rel="icon" type="image/x-icon" href="{% static 'iconos/FlixVerseicono.ico' %}">
+</head>
+
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="{% static 'video_tiempo_usuario.mp4' %}" type="video/mp4">
+    </video>
+    {% include 'navbar2.html' %}
+    {% block content %}
+    <div class="titulo">
+    <h1>¡Hola, {{ user.username }}!</h1>
+    <h2>Este es el tiempo que has pasado con nosotros en <span style="color: #00ffff;">FlixVerse</span></h2>
+    {% if chart %}
+    </div>
+    <div class="chart-container">
+        <img src="data:image/png;base64,{{ chart }}" alt="Gráfico de tiempo en la aplicación del usuario">
+    </div>
+    {% else %}
+    <p> {{mensaje}} </p>
+    {% endif %}
+    {% endblock %}
+</body>
+</html>

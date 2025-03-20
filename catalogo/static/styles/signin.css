@@ -1,3 +1,63 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:969681ff0b365457903d78546cd27ac6e362511be2d719eb9cb22071019294ed
-size 1197
+body {
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    overflow: hidden;
+    text-align: center;
+}
+.container {
+    padding: 80px;
+}
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.login-card {
+    background: rgba(20, 20, 20, 0.85);
+    border-radius: 10px;
+    padding: 50px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
+    100% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.9); }
+}
+
+.neon-text {
+    color: cyan;
+    text-shadow: 0 0 10px cyan, 0 0 20px cyan;
+}
+
+.neon-btn {
+    background: linear-gradient(90deg, #00feba, #5b548a);
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: 0.3s;
+    box-shadow: 0 0 10px cyan;
+}
+
+.neon-btn:hover {
+    box-shadow: 0 0 20px cyan;
+    transform: scale(1.1);
+}
+
+.register-link {
+    color: cyan;
+    text-shadow: 0 0 5px cyan;
+    text-decoration: none;
+}
+
+.register-link:hover {
+    text-shadow: 0 0 10px cyan;
+}

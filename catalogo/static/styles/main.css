@@ -1,3 +1,174 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cf5030817de79e7f98f75e9e3447dbc4eb5a3a5c54b9bece99710fcbab1df1da
-size 3801
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    background: black;
+    overflow-x: hidden;
+    position: relative;
+}
+
+#background-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.titulo-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(0, 255, 255, 0.5);
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.titulo-container:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: cyan;
+    text-shadow: 0 0 10px cyan, 0 0 20px cyan, 0 0 40px cyan;
+    margin-top: 20px;
+}
+
+/* Tarjeta de película */
+.pelicula-card {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    width: 250px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: 2px solid rgba(0, 255, 255, 0.5);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    overflow: hidden;
+    position: relative;
+}
+
+.pelicula-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+}
+
+/* Imagen de la película */
+.pelicula-card img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.pelicula-card:hover img {
+    transform: scale(1.05);
+}
+
+.pelicula-card h5 {
+    font-size: 1.3rem;
+    margin-top: 10px;
+    color: cyan;
+    text-shadow: 0 0 5px cyan, 0 0 10px cyan;
+}
+
+.pelicula-card p {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+.pelicula-card button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.pelicula-card button:hover {
+    transform: scale(1.1);
+}
+
+button[style*="background-color: red"] {
+    background: rgba(255, 0, 0, 0.8);
+    box-shadow: 0 0 10px red;
+}
+
+button[style*="background-color: rgb(7, 199, 0)"] {
+    background: rgba(7, 199, 0, 0.8);
+    box-shadow: 0 0 10px lime;
+}
+
+button[style*="background-color: rgb(255, 123, 0)"] {
+    background: rgba(255, 123, 0, 0.8);
+    box-shadow: 0 0 10px orange;
+}
+
+button[style*="background-color: rgb(40, 5, 194)"] {
+    background: rgba(40, 5, 194, 0.8);
+    box-shadow: 0 0 10px blue;
+}
+
+
+h5 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: cyan;
+    text-shadow: 0 0 5px cyan, 0 0 10px cyan, 0 0 20px cyan;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+h5:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 10px cyan, 0 0 20px cyan, 0 0 40px cyan;
+}
+
+p {
+    font-size: 1.1rem;
+    color: rgba(173, 216, 230, 0.8);
+    text-shadow: 0 0 5px rgba(173, 216, 230, 0.7);
+    letter-spacing: 1px;
+    transition: text-shadow 0.3s ease-in-out;
+}
+
+p:hover {
+    text-shadow: 0 0 10px rgba(173, 216, 230, 1);
+}
+
+.categoria-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: cyan;
+    text-shadow: 0 0 5px cyan, 0 0 10px cyan, 0 0 20px cyan;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}

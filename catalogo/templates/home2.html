@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0e322a62a69669fdef4ce48a770d202525da024fe1e777f5a2da67ec6c3a46ce
-size 1185
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'styles/home2.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'iconos/FlixVerseicono.ico' %}">
+</head>
+
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="{% static 'video_home_2.mp4' %}" type="video/mp4">
+    </video>
+    {% include 'navbar2.html' %}
+
+    {% block content %}
+    
+   
+    <main>
+        <h1 style="font-size: 15px;">Bienvenido al Multiverso de FlixVerse</h1>
+        <p style="font-size: 15px;">Explora las dimensiones de películas y series. ¿A qué universo quieres entrar?</p>
+        <div class="contenedor">
+            <a href="{% url 'lista_peliculas' %}">
+                <img src="{% static 'home_peliculas.webp' %}" alt="Categorías de películas">
+            </a>
+            <a href="{% url 'lista_series' %}">
+                <img src="{% static 'home_series.webp' %}" alt="Categorías de series">
+            </a>
+        </div>
+    </main>
+    {% endblock %}
+
+</body>
+
+</html>

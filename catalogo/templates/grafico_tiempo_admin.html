@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:136e021d5545ae8e039fb7c50c1123b1c4240be92a3d5ddd189377e93948fdc5
-size 281
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+    <h2>Tiempo total de sesión por usuario</h2>
+
+    {% if chart %}
+        <img src="data:image/png;base64,{{ chart }}" alt="Gráfico de tiempo">
+    {% else %}
+        <p>{{ mensaje }}</p>
+    {% endif %}
+
+{% endblock %}

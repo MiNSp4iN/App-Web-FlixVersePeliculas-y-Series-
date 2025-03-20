@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4d5fc18e68765d99c44dc6a2910ae9f07371ca3951f1226ba209382d5b509274
-size 1117
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Películas Favoritas</title>
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}?v=2">
+    <link rel="icon" type="image/x-icon" href="{% static 'iconos/FlixVerseicono.ico' %}">
+</head>
+
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="{% static 'video_main.mp4' %}" type="video/mp4">
+    </video>
+    {% include 'navbar2.html' %}
+    {%block content%}
+    <div class="titulo-container">
+    <h1 class="titulo" style="font-size: 0.8em;">Aquí tienes las películas que más te gustan {{ mensaje }}</h1>
+    </div>
+
+    {% if peliculas_favoritas %}
+        <div id="resultadoLista">
+            <div class="pelicula-grid">
+                {% include 'partials/peliculas_favoritas.html' %}
+            </div>
+        </div>
+    {% else %}
+    <p>No tienes películas favoritas aún.</p>
+    {% endif %}
+    {% endblock %}
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+</body>
+
+</html>

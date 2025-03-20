@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:dd6cd0f542aa08a2a4823314f841b616aecaed7616725f1dada7b66d4f473461
-size 1886
+<div class="container">
+    {% for serie in series %}
+    <div class="pelicula-card">
+        <a href="{% url 'detalle_serie' serie.id serie.categoria.id %}" style="text-decoration: none;">
+            <img src="{{serie.portada.url}}" class="img-fluid rounded-start" alt="{{serie.titulo}}">
+            <h5 class="card-title  text-primary">{{serie.titulo}}</h5>
+            <p class="card-text">Año: {{serie.anio}}</p>
+            <p class="card-text">Creador o creadores: {{serie.creador_creadores}}</p>
+            <p class="card-text categoria-text"><small class="text-muted">Categoría: {{serie.categoria}}</small></p>
+        </a>
+        <form action="{% url 'marcar_serie_favorita' serie.id %}" method="POST">
+            {% csrf_token %}
+            {% if request.user in serie.favorita.all %}
+            <button type="submit" style="background-color: red; color: white;"> Quitar de Favoritas</button>
+            {% else %}
+            <button type="submit" style="background-color: rgb(7, 199, 0); color: white;">Marcar como
+                Favorita</button>
+            {% endif %}
+        </form>
+        <form action="{% url 'marcar_serie_vista' serie.id %}" method="POST">
+            {% csrf_token %}
+            {% if request.user in serie.vista.all %}
+            <!-- pelicula.vista.all indica una lista de usuarios que han marcado la pelicula como vista y si el usuario actual esta en esa lista le aparecerá el botón de quitar de vistas -->
+            <button type="submit" style="background-color: rgb(255, 123, 0); color: white;"> Quitar de
+                Vistas</button>
+            {% else %}
+            <button type="submit" style="background-color: rgb(40, 5, 194); color: white;">Marcar como
+                Vista</button>
+            {% endif %}
+        </form>
+    </div>
+    {% empty %}
+    <p>No se encontraron resultados</p>
+    {% endfor %}
+</div>

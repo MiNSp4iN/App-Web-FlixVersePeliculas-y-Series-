@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:542c088610384590454bc335d30c45091d9d60b0523ceb9bc2df45e790f325be
-size 1203
+<div class="container">
+    {% for pelicula in peliculas_vistas %}
+    <div class="pelicula-card">
+        <a href="{% url 'detalle_pelicula' pelicula.id pelicula.categoria.id %}" style="text-decoration: none;">
+                <img src="{{ pelicula.portada.url }}" class="img-fluid rounded-start"
+                    alt="{{ pelicula.titulo }}" width="100">
+                <h5>{{ pelicula.titulo }}</h5>
+        </a>
+        <form action="{% url 'marcar_pelicula_vista' pelicula.id %}" method="POST">
+            {% csrf_token %}
+            {% if request.user in pelicula.vista.all %}
+            <!-- pelicula.vista.all indica una lista de usuarios que han marcado la pelicula como vista y si el usuario actual esta en esa lista le aparecerá el botón de quitar de vistas -->
+            <button type="submit" style="background-color: rgb(255, 123, 0); color: white;"> Quitar de
+                Vistas</button>
+            {% else %}
+            <button type="submit" style="background-color: rgb(40, 5, 194); color: white;">Marcar como
+                Vista</button>
+            {% endif %}
+        </form>
+    </div>
+    {% empty %}
+    <p>No se encontraron resultados</p>
+    {% endfor %}
+</div>
